@@ -3,6 +3,8 @@ const hbs=require("hbs")
 const path=require("path")
 const app=express();
 
+const port=process.env.PORT || 3000
+
 const geoLocations=require("../utils/geoLocation.js")
 const weather=require("../utils/weather.js")
 
@@ -92,6 +94,6 @@ res.render("about")
 })
 
 
-app.listen(3000,()=>{
-	console.log("This app is running at port 3000")
+app.listen(port,()=>{
+	console.log("This app is running at port " + port )
 })

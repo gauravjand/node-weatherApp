@@ -17,7 +17,7 @@ e.preventDefault()
 console.log(locations.value)
 messageOne.textContent="Loading..."
 messageTwo.textContent=""
-	fetch("http://localhost:3000/weatherData?address="+ locations.value).then((response)=>{
+	fetch("/weatherData?address="+ locations.value).then((response)=>{
 		response.json().then((data)=>{
 			messageOne.textContent="Location: "+ data.Location
 			messageTwo.textContent="Temperature: " + data.Temperature
