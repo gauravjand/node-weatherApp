@@ -12,7 +12,8 @@ if(error)
 	}
 else 
 	{
-		callback(undefined,response.body.currently.temperature)
+		callback(undefined,{temp:response.body.currently.temperature,
+			weather: response.body.hourly.summary})
 		
 	}
 })

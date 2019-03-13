@@ -21,7 +21,7 @@ app.get("/",(req,res)=>{
 })
 
 
-	var Location,Temp
+	var Location,Temp,Weath
 
 
 
@@ -63,7 +63,7 @@ app.get("/weatherData",(req,res)=>{
 				return console.log("There was an error in fetching the coordinates of the location")	
 			}
 
-			weather(response.latitude,response.longitude,(errorFromWeatherAPI,responseFromWeatherAPI)=>{
+			weather(response.latitude,response.longitude,(errorFromWeatherAPI,{temp,weather})=>{
 				if(errorFromWeatherAPI)
 				{
 					console.log("error",errorFromWeatherAPI)
@@ -71,15 +71,18 @@ app.get("/weatherData",(req,res)=>{
 				else
 				{
 					Location=response.location
-					Temp=responseFromWeatherAPI
-					console.log("The temp is",responseFromWeatherAPI)
+					Temp=temp
+					Weath=weather
+
+					console.log("The temp is",temp)
 				}
 			})
 
 		})
 	res.send({
 		Location,
-		Temperature: Temp
+		Temperature: Temp,
+		Weather: Weath
 	})
 })
 
